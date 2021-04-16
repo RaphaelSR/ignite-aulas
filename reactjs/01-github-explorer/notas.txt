@@ -1,0 +1,10 @@
+####comandos###
+
+* yarn init -y  
+--> Inicialização do package.json
+
+* yarn add react
+--> Instalador do react
+
+* yarn add react-dom
+--> Instala react-dom, permite que o react se comunique com a arvore de elementos do html, criar elementos, deletar.. 
