@@ -8,3 +8,11 @@
 
 * yarn add react-dom
 --> Instala react-dom, permite que o react se comunique com a arvore de elementos do html, criar elementos, deletar.. 
+
+* yarn add @babel/core @babel/cli @babel/preset-env -D
+--> Instala dependências do babel para conversão/interpretação do codigo.
+--> yarn babel src/index.js --out-file dist/bundle.js
+
+* yarn add @babel/preset-react -D
+--> Instala dependencia para entender codigo react
+--> yarn babel src/index.jsx --out-file dist/bundle.js
