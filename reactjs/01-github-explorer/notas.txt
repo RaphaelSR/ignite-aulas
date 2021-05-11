@@ -25,3 +25,6 @@
 
 * yarn add html-webpack-plugin -D
 --> Injeta na aplicação para tirar a necessidade de usar a tag <script/> no html
+
+* yarn add webpack-dev-server -D
+--> Instalação do dev server dentro do Webpack
