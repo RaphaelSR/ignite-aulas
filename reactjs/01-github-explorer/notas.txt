@@ -22,3 +22,6 @@
 
 * yarn add babel-loader -D
 --> Dependência de integração entre o babel e webpack.  Webpack indentifica babel para conversão.
+
+* yarn add html-webpack-plugin -D
+--> Injeta na aplicação para tirar a necessidade de usar a tag <script/> no html
