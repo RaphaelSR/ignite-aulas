@@ -28,3 +28,6 @@
 
 * yarn add webpack-dev-server -D
 --> Instalação do dev server dentro do Webpack
+
+* yarn add cross-env -D
+--> Instalção de dependências de desenvolvimento independente do sistema
