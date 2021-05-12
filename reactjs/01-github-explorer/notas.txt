@@ -31,3 +31,6 @@
 
 * yarn add cross-env -D
 --> Instalção de dependências de desenvolvimento independente do sistema
+
+* yarn add style-loader css-loader -D
+--> Instalação de daus dependências para o babel ler styles e css. Necessitam ser usadas em conjunto.
