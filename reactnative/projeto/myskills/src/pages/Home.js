@@ -28,7 +28,6 @@ export function Home(){
 
   return (
     <SafeAreaView style={styles.container}>
-       
       <Text style={styles.title}>
         {greeting}, Raphael
       </Text>

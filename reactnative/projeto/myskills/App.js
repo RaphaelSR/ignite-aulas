@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {Fragment}from 'react';
+import {StatusBar} from 'react-native';
 import {Home} from './src/pages/Home';
 
 export default function App(){
-  return <Home/>
+  return (
+    <Fragment>
+    <StatusBar barStyle='light-content' backgroundColor='#121015'/>
+    <Home/>
+    </Fragment>
+  )
 }
