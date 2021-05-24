@@ -1,19 +1,43 @@
-import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView, TextInput, placeholder, TouchableOpacity, Touchable} from 'react-native';
+import React, { useState } from 'react';
+import {View, Text, StyleSheet, SafeAreaView, TextInput, placeholder, TouchableOpacity, Touchable, ScrollView} from 'react-native';
 
 export function Home(){
+  const [newSkill, setNewSkill] = useState('');
+  const [mySkills, setMySkills] = useState([]);
+
+  function handleAddNewSkill(){
+    setMySkills(oldState => [...oldState, newSkill]);
+    //setMySkills([...mySkills, newSkill]); mesma funcionalidade
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+       
       <Text style={styles.title}>
         Welcome, Raphael
       </Text>
-      <TextInput style={styles.input} placeholder="New skill" placeholderTextColor="#555"/>
-      <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+      <TextInput style={styles.input} placeholder="New skill" placeholderTextColor="#555" onChangeText={setNewSkill}/>
+      <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={handleAddNewSkill}>
         <Text style={styles.buttonText}>Add</Text>
       </TouchableOpacity>
-      <Text style={[styles.title, {marginTop: 50}]}>
+      <ScrollView showsVerticalScrollIndicator={false} >
+      <Text style={[styles.title, {marginVertical: 50}]}>
         My Skills
       </Text>
+     
+      {
+        mySkills.map(skill => (
+          <TouchableOpacity key={skill} style={styles.buttonSkill}>
+          <Text style={styles.textSkill}>
+            {skill}
+          </Text>
+          </TouchableOpacity>
+        ))
+      }
+
+      </ScrollView>
+
+
     </SafeAreaView>
   )
 }
@@ -48,5 +72,18 @@ title: {
     color: '#FFF',
     fontSize: 17,
     fontWeight: 'bold',
-  }
+  },
+  buttonSkill: {
+    backgroundColor: '#1F1e25',
+    padding: 15,
+    borderRadius: 50,
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  textSkill: {
+    color: '#FFF',    
+    fontSize: 22,
+    fontWeight: 'bold',
+    borderRadius: 20,
+  },
 });
