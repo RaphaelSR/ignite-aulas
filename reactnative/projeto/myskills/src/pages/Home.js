@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, SafeAreaView, TextInput, placeholder, TouchableOpacity, Touchable, ScrollView} from 'react-native';
+import {Text, StyleSheet, SafeAreaView, TextInput, FlatList} from 'react-native';
 import {Button} from '../components/Button';
 import { CardSkill } from '../components/SkillCard';
 
@@ -24,12 +24,16 @@ export function Home(){
       <Text style={[styles.title, {marginVertical: 50}]}>
         My Skills
       </Text>
-     
-      {
-        mySkills.map(skill => (
-          <CardSkill skill={skill}/>
-        ))
-      }
+      
+      <FlatList 
+        data={mySkills}
+        keyExtractor={item => item} //cada item vai ser a propria chave na listagem
+        renderItem={({item }) => (
+          <CardSkill skill={item}/>
+        )}
+      />
+    
+      
     </SafeAreaView>
   )
 }
