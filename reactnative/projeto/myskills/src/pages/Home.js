@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, SafeAreaView, TextInput, FlatList} from 'react-native';
 import {Button} from '../components/Button';
 import { CardSkill } from '../components/SkillCard';
@@ -6,18 +6,33 @@ import { CardSkill } from '../components/SkillCard';
 export function Home(){
   const [newSkill, setNewSkill] = useState('');
   const [mySkills, setMySkills] = useState([]);
+  const [greeting, setGreeting] = useState('');
 
   function handleAddNewSkill(){
     setMySkills(oldState => [...oldState, newSkill]);
     //setMySkills([...mySkills, newSkill]); mesma funcionalidade
   }
 
+  useEffect(() => {
+    const greetingHour = new Date().getHours();
+    console.log(greetingHour);
+    //greetingHour < 12 ? setGreeting('Good morning') : setGreeting('Good afternoon');
+    if (greetingHour < 12){
+      setGreeting('Good morning');
+    }else if (greetingHour >= 12 && greetingHour < 18){
+      setGreeting('Good afternoon');
+    }else{
+      setGreeting('Good night');
+    }
+  }, [])
+
   return (
     <SafeAreaView style={styles.container}>
        
       <Text style={styles.title}>
-        Welcome, Raphael
+        {greeting}, Raphael
       </Text>
+
       <TextInput style={styles.input} placeholder="New skill" placeholderTextColor="#555" onChangeText={setNewSkill}/>
       <Button onPress={handleAddNewSkill}/>
       
@@ -57,5 +72,8 @@ title: {
   padding: Platform.OS === 'ios' ? 15 : 12,
   marginTop: 30,
   borderRadius: 7,
+  },
+  greetings: {
+    color: '#FFF'
   },
 });
