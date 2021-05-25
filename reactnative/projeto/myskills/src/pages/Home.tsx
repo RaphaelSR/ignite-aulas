@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text, StyleSheet, SafeAreaView, TextInput, FlatList} from 'react-native';
+import {Text, StyleSheet, SafeAreaView, TextInput, FlatList, Platform} from 'react-native';
 import {Button} from '../components/Button';
 import { CardSkill } from '../components/SkillCard';
 
@@ -14,7 +14,7 @@ export function Home(){
   }
 
   useEffect(() => {
-    const greetingHour = new Date().getHours();
+    const greetingHour = new Date().getHours() -3;
     console.log(greetingHour);
     //greetingHour < 12 ? setGreeting('Good morning') : setGreeting('Good afternoon');
     if (greetingHour < 12){
