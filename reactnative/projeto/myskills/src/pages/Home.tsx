@@ -3,13 +3,24 @@ import {Text, StyleSheet, SafeAreaView, TextInput, FlatList, Platform} from 'rea
 import {Button} from '../components/Button';
 import { CardSkill } from '../components/SkillCard';
 
+interface SkillData{
+  id: string;
+  name: string;
+}
+
 export function Home(){
   const [newSkill, setNewSkill] = useState('');
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<SkillData[]>([]);
   const [greeting, setGreeting] = useState('');
 
   function handleAddNewSkill(){
-    setMySkills(oldState => [...oldState, newSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill
+    }
+
+
+    setMySkills(oldState => [...oldState, data]);
     //setMySkills([...mySkills, newSkill]); mesma funcionalidade
   }
 
@@ -41,9 +52,9 @@ export function Home(){
       
       <FlatList 
         data={mySkills}
-        keyExtractor={item => item} //cada item vai ser a propria chave na listagem
+        keyExtractor={item => item.id} //cada item vai ser a propria chave na listagem
         renderItem={({item }) => (
-          <CardSkill skill={item}/>
+          <CardSkill skill={item.name}/>
         )}
       />
     
