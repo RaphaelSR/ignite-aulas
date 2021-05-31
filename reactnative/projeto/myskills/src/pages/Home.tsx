@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, SafeAreaView, TextInput, FlatList, Platform} from 'react-native';
 import {Button} from '../components/Button';
-import { CardSkill } from '../components/SkillCard';
+import { SkillCard } from '../components/SkillCard';
 
 interface SkillData{
   id: string;
@@ -22,6 +22,10 @@ export function Home(){
 
     setMySkills(oldState => [...oldState, data]);
     //setMySkills([...mySkills, newSkill]); mesma funcionalidade
+  }
+
+  function handleRemoveSkill(id: string){
+    setMySkills(oldState => oldState.filter(skill => skill.id !== id)); //Deixa apenas as skills diferentes da ID selecionada(objeto)
   }
 
   useEffect(() => {
@@ -45,6 +49,7 @@ export function Home(){
 
       <TextInput style={styles.input} placeholder="New skill" placeholderTextColor="#555" onChangeText={setNewSkill}/>
       <Button  title='Add' onPress={handleAddNewSkill}/>
+    
       
       <Text style={[styles.title, {marginVertical: 50}]}>
         My Skills
@@ -54,7 +59,7 @@ export function Home(){
         data={mySkills}
         keyExtractor={item => item.id} //cada item vai ser a propria chave na listagem
         renderItem={({item }) => (
-          <CardSkill skill={item.name}/>
+          <SkillCard skill={item.name} onPress={() => handleRemoveSkill(item.id)}/>
         )}
       />
     
