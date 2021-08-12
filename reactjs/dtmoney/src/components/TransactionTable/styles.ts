@@ -26,7 +26,7 @@ table{
         &:first-child{
             color: var(--text-title);
         }
-        &.deposite{
+        &.deposit{
             color: var(--green);
         }
         &.withdraw{
