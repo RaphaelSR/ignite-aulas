@@ -28,8 +28,11 @@ app.post("/account", (request, response) => {
     return response.status(201).send(costumers);
 })
 
-app.get("/account", (request, response) => {
-    return response.status(200).send(costumers);
+app.get("/statement/:cpf", (request, response) => {
+    const { cpf } = request.params;
+    const customer = costumers.find(costumer => costumer.cpf === cpf);
+
+    return response.json(customer.statement);
 })
 
 app.listen(3333, () => {console.log('API Started on localhost:3333')});
