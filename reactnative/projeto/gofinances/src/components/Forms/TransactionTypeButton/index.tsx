@@ -5,6 +5,7 @@ import {Container, Icon, Title} from './styles';
 interface Props extends TouchableOpacityProps{
     title: string;
     type: 'up' | 'down';
+    isActive: boolean;
 }
 
 const icons = {
@@ -12,10 +13,10 @@ const icons = {
     down: 'arrow-down-circle',
 }
 
-export function TransactionTypeButton({title, type, ...rest}: Props){
+export function TransactionTypeButton({title, type, isActive, ...rest}: Props){
     return(
-        <Container {...rest}>
-            <Icon name={icons[type]}/>
+        <Container  isActive={isActive} type={type} {...rest}>
+            <Icon name={icons[type]} type={type}/>
             <Title>{title}</Title>
         </Container>
     )
