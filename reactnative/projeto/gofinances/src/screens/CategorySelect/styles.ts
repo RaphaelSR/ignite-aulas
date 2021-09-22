@@ -45,9 +45,12 @@ export const Icon = styled(Feather)`
   margin-right: 16px;
 `;
 
-export const Name = styled.Text`
+export const Name = styled.Text<CategoryProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
+  color: ${({ isActive }) =>
+    isActive ? theme.colors.text_dark : theme.colors.title
+  };
 `;
 
 export const Separator = styled.View`
