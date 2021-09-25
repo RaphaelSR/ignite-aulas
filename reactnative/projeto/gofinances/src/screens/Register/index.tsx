@@ -32,7 +32,7 @@ const schema = Yup.object().shape({
   amount: Yup
   .number()
   .typeError('Informe um valor númerico')
-  .positive('O valor não pode ser negativo')
+  .positive('O valor não pode ser negativo')r
 });
 
 export function Register(){
