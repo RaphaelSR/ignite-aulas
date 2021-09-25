@@ -1,9 +1,9 @@
-import React from "react";
-import { FlatList } from "react-native-gesture-handler";
+import React from 'react';
+import { FlatList } from 'react-native-gesture-handler';
 
-import { Button } from "../../components/Forms/Button";
+import { Button } from '../../components/Form/Button';
 
-import { categories } from "../../utils/categories";
+import { categories } from '../../utils/categories';
 
 import {
   Container,
@@ -14,7 +14,7 @@ import {
   Name,
   Separator,
   Footer,
-} from "./styles";
+} from './styles';
 
 interface Category {
   key: string;
@@ -30,9 +30,10 @@ interface Props {
 export function CategorySelect({
   category,
   setCategory,
-  closeSelectCategory,
-}: Props) {
-  function handleCategorySelect(category: Category) {
+  closeSelectCategory
+} : Props ){
+
+  function handleCategorySelect(category: Category){
     setCategory(category);
   }
 
@@ -44,7 +45,7 @@ export function CategorySelect({
 
       <FlatList
         data={categories}
-        style={{ flex: 1, width: "100%" }}
+        style={{ flex: 1, width: '100%'}}
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
           <Category
@@ -52,15 +53,18 @@ export function CategorySelect({
             isActive={category.key === item.key}
           >
             <Icon name={item.icon} />
-            <Name isActive={category.key === item.key}>{item.name}</Name>
+            <Name>{item.name}</Name>
           </Category>
         )}
         ItemSeparatorComponent={() => <Separator />}
       />
 
       <Footer>
-        <Button title="Selecionar" onPress={closeSelectCategory} />
+        <Button
+          title="Selecionar"
+          onPress={closeSelectCategory}
+        />
       </Footer>
     </Container>
-  );
+  )
 }
