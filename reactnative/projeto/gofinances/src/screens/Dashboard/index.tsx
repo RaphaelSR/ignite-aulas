@@ -1,7 +1,7 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useEffect, useState} from 'react';
-
+import React, {useEffect, useState, useCallback} from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { HighlightCard } from '../../components/HighlightCard';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
 
@@ -21,6 +21,7 @@ import {
   TransactionList,
   LogoutButton
 } from './styles'
+
 
 export interface DataListProps extends TransactionCardProps {
   id: string;
@@ -62,6 +63,10 @@ export function Dashboard(){
   useEffect(() => {
     LoadTransactions();
   },[]);
+
+  useFocusEffect(useCallback(() => {
+    LoadTransactions();
+  }, []));
 
   return (
     <Container>
