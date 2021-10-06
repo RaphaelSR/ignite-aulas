@@ -56,8 +56,9 @@ export function Dashboard(){
     Math.max.apply(Math, collection
     .filter(transaction => transaction.type === type)
     .map(transaction => new Date(transaction.date).getTime())))
-
+    
     return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`;
+    
   }
 
   async function loadTransactions(){

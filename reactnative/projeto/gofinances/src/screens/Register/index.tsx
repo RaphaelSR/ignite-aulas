@@ -38,7 +38,7 @@ const schema = Yup.object().shape({
 export function Register() {
   const [transactionType, setTransactionType] = useState("");
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
-  const dataKey = "#gofinances:transactions";
+  const dataKey = "@gofinances:transactions";
   const [category, setCategory] = useState({
     key: "category",
     name: "Categoria",
@@ -87,7 +87,7 @@ export function Register() {
       const currentData = data ? JSON.parse(data) : [];
 
       const dataFormatted = [...currentData, newTransaction];
-
+    
       await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
       reset();
       setTransactionType("");
