@@ -4,7 +4,6 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
 import LogoSvg from '../../assets/logo.svg';
-import FacebookSvg from '../../assets/facebook.svg';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -12,8 +11,8 @@ import { SignInSocialButton } from '../../components/SignInSocialButton';
 import { Container, Header, TitleWrapper, Title, SignInTitle, Footer, FooterWrapper } from './styles';
 
 export function Signin(){
-    const { signInWithGoogle } = useAuth();
-    
+    const { signInWithGoogle, user } = useAuth();
+    console.log(user);
     async function handlesignInWithGoogle(){
         try {
             await signInWithGoogle();
