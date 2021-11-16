@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ActivityIndicator, Alert } from "react-native";
+import { ActivityIndicator, Alert, Platform } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import AppleSvg from "../../assets/apple.svg";
 import GoogleSvg from "../../assets/google.svg";
@@ -32,7 +32,7 @@ export function Signin() {
       console.log(error);
       Alert.alert("Não foi possível conectar a conta Google");
       setIsLoading(false);
-    } 
+    }
   }
   async function handleSignInWithApple() {
     try {
@@ -67,15 +67,17 @@ export function Signin() {
             svg={GoogleSvg}
             onPress={handleSignInWithGoogle}
           />
-          <SignInSocialButton
-            title="Entrar com Apple"
-            svg={AppleSvg}
-            onPress={handleSignInWithApple}
-          />
+          {Platform.OS === "ios" && (
+            <SignInSocialButton
+              title="Entrar com Apple"
+              svg={AppleSvg}
+              onPress={handleSignInWithApple}
+            />
+          )}
         </FooterWrapper>
-        {
-            isLoading && <ActivityIndicator size="large" color={theme.colors.shape} />
-        }
+        {isLoading && (
+          <ActivityIndicator size="large" color={theme.colors.shape} />
+        )}
       </Footer>
     </Container>
   );
